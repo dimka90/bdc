@@ -1,5 +1,8 @@
 mod command;
-use crate::command::command::get_command;
-fn main() {
-    get_command();
+mod request;
+use crate::command::command::start_bdc;
+
+#[tokio::main]
+async  fn main() {
+    let _ = start_bdc().await;
 }
