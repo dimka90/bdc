@@ -6,7 +6,7 @@ pub async  fn start_bdc() -> Result<(),  Box<dyn std::error::Error>>{
                         .about("Bdc gives the real time of dollar to naira")
                         .version("0.1.")
                         .subcommand(
-                            Command::new("bdc")
+                            Command::new("rate")
                              .arg(
                             Arg::new("Rate")
                             .long("rate")
@@ -16,7 +16,7 @@ pub async  fn start_bdc() -> Result<(),  Box<dyn std::error::Error>>{
  
 
     match  matches.subcommand() {
-        Some(("bdc", rate_submatches)) =>{
+        Some(("rate", rate_submatches)) =>{
             let _ = rate_submatches.get_one::<bool>("Rate").unwrap();
             let result = get_usdt_ngn_rate().await;
             let value = result.ok().unwrap();
